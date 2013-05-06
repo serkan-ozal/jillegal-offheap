@@ -7,7 +7,7 @@
 
 package tr.com.serkanozal.jillegal.offheap.domain.builder.pool;
 
-import tr.com.serkanozal.jillegal.domain.builder.Builder;
+import tr.com.serkanozal.jillegal.core.domain.builder.Builder;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.ArrayOffHeapPoolCreateParameter;
 
 public class ArrayOffHeapPoolCreateParameterBuilder<T> implements Builder<ArrayOffHeapPoolCreateParameter<T>> {

@@ -9,10 +9,10 @@ package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
 import java.lang.reflect.Array;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.util.JvmUtil;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.ArrayOffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.pool.ExplicitArrayOffHeapPool;
-import tr.com.serkanozal.jillegal.util.JvmUtil;
 
 public class PrimitiveTypeArrayOffHeapPool<T, A> extends BaseOffHeapPool<T, ArrayOffHeapPoolCreateParameter<T>> 
 		implements ExplicitArrayOffHeapPool<T, A, ArrayOffHeapPoolCreateParameter<T>> {

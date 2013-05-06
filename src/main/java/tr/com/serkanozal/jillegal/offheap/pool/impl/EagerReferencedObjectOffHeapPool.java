@@ -9,13 +9,13 @@ package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
 import java.lang.reflect.Array;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.util.JvmUtil;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.SequentialObjectOffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.pool.DeeplyForkableObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.LimitedObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.ObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.RandomlyReadableOffHeapPool;
-import tr.com.serkanozal.jillegal.util.JvmUtil;
 
 public class EagerReferencedObjectOffHeapPool<T> extends BaseOffHeapPool<T, SequentialObjectOffHeapPoolCreateParameter<T>> 
 		implements 	ObjectOffHeapPool<T, SequentialObjectOffHeapPoolCreateParameter<T>>,
@@ -133,7 +133,7 @@ public class EagerReferencedObjectOffHeapPool<T> extends BaseOffHeapPool<T, Sequ
 		this.elementType = elementType;
 		this.objectCount = objectCount;
 		this.directMemoryService = directMemoryService;
-		this.objectSize = directMemoryService.sizeOf(elementType);
+		this.objectSize = JvmUtil.sizeOf(elementType);
 		this.arraySize = JvmUtil.sizeOfArray(elementType, objectCount);
 		this.allocatedAddress = 
 				directMemoryService.allocateMemory(arraySize + (objectCount * objectSize) + 
@@ -146,7 +146,7 @@ public class EagerReferencedObjectOffHeapPool<T> extends BaseOffHeapPool<T, Sequ
 			this.sampleObject = (T) directMemoryService.allocateInstance(elementType);
 		} 
 		this.sampleArray = (T[]) Array.newInstance(elementType, 0);
-		this.sampleObjectAddress = directMemoryService.addressOf(sampleObject);
+		this.sampleObjectAddress = JvmUtil.addressOf(sampleObject);
 		
 		init();
 	}

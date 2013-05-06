@@ -7,9 +7,9 @@
 
 package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryServiceFactory;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.OffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryServiceFactory;
 import tr.com.serkanozal.jillegal.offheap.pool.OffHeapPool;
 
 public abstract class BaseOffHeapPool<T, P extends OffHeapPoolCreateParameter<T>> implements OffHeapPool<T, P> {

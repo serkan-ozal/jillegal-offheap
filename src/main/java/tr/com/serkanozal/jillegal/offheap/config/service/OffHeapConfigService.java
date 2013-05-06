@@ -7,8 +7,9 @@
 
 package tr.com.serkanozal.jillegal.offheap.config.service;
 
-public interface OffHeapConfigService {
+import tr.com.serkanozal.jillegal.core.config.service.ConfigService;
+import tr.com.serkanozal.jillegal.offheap.config.provider.OffHeapConfigProvider;
 
-	// TODO Implement
-	
+public interface OffHeapConfigService  extends ConfigService<OffHeapConfigProvider> {
+
 }

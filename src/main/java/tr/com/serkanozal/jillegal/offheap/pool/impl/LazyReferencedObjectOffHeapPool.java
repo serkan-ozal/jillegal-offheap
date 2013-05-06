@@ -7,8 +7,9 @@
 
 package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.util.JvmUtil;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.SequentialObjectOffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.pool.DeeplyForkableObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.LimitedObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.ObjectOffHeapPool;
@@ -99,11 +100,11 @@ public class LazyReferencedObjectOffHeapPool<T> extends BaseOffHeapPool<T, Seque
 		this.elementType = elementType;
 		this.objectCount = objectCount;
 		this.directMemoryService = directMemoryService;
-		this.objectSize = directMemoryService.sizeOf(elementType);
+		this.objectSize = JvmUtil.sizeOf(elementType);
 		this.allocatedAddress = directMemoryService.allocateMemory(objectSize * objectCount);
 		this.addressLimit = allocatedAddress + (objectCount * objectSize) - objectSize;
 		this.sampleObject = (T) directMemoryService.allocateInstance(elementType);
-		this.sampleObjectAddress = directMemoryService.addressOf(sampleObject);
+		this.sampleObjectAddress = JvmUtil.addressOf(sampleObject);
 		
 		init();
 	}

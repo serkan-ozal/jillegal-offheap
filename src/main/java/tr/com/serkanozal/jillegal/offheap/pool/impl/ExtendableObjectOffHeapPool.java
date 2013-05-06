@@ -10,9 +10,9 @@ package tr.com.serkanozal.jillegal.offheap.pool.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.ExtendableObjectOffHeapPoolCreateParameter;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.OffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.pool.DeeplyForkableObjectOffHeapPool;
 import tr.com.serkanozal.jillegal.offheap.pool.ObjectOffHeapPool;
 

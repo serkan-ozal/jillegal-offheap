@@ -7,11 +7,9 @@
 
 package tr.com.serkanozal.jillegal.offheap.config.service;
 
-import tr.com.serkanozal.jillegal.offheap.config.service.annotation.AnnotationBasedOffHeapConfigService;
-
 public class OffHeapConfigServiceFactory {
 
-	private static OffHeapConfigService offHeapConfigService = new AnnotationBasedOffHeapConfigService();
+	private static OffHeapConfigService offHeapConfigService = new OffHeapConfigServiceImpl();
 	
 	private OffHeapConfigServiceFactory() {
 		

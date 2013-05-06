@@ -9,10 +9,10 @@ package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
 import java.lang.reflect.Array;
 
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.util.JvmUtil;
 import tr.com.serkanozal.jillegal.offheap.domain.model.pool.ArrayOffHeapPoolCreateParameter;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
 import tr.com.serkanozal.jillegal.offheap.pool.ArrayOffHeapPool;
-import tr.com.serkanozal.jillegal.util.JvmUtil;
 
 public class ComplexTypeArrayOffHeapPool<T> extends BaseOffHeapPool<T, ArrayOffHeapPoolCreateParameter<T>> 
 		implements ArrayOffHeapPool<T, ArrayOffHeapPoolCreateParameter<T>> {
@@ -113,7 +113,7 @@ public class ComplexTypeArrayOffHeapPool<T> extends BaseOffHeapPool<T, ArrayOffH
 		if (index >= 0 && index < length) {
 			// Make target index points to element 
 			directMemoryService.putLong(arrayIndexStartAddress + (index * arrayIndexScale), 
-					JvmUtil.toJvmAddress(directMemoryService.addressOf(element)));
+					JvmUtil.toJvmAddress(JvmUtil.addressOf(element)));
 		}	
 		else {
 			throw new IllegalArgumentException("Invalid index: " + index);
@@ -147,7 +147,7 @@ public class ComplexTypeArrayOffHeapPool<T> extends BaseOffHeapPool<T, ArrayOffH
 		this.length = length;
 		this.initializeElements = initializeElements;
 		this.directMemoryService = directMemoryService;
-		this.objectSize = directMemoryService.sizeOf(elementType);
+		this.objectSize = JvmUtil.sizeOf(elementType);
 		this.arraySize = JvmUtil.sizeOfArray(elementType, length);
 		this.allocatedAddress = 
 				directMemoryService.allocateMemory(arraySize + (length * objectSize) + 
@@ -160,7 +160,7 @@ public class ComplexTypeArrayOffHeapPool<T> extends BaseOffHeapPool<T, ArrayOffH
 			this.sampleObject = (T) directMemoryService.allocateInstance(elementType);
 		} 
 		this.sampleArray = (T[]) Array.newInstance(elementType, 0);
-		this.sampleObjectAddress = directMemoryService.addressOf(sampleObject);
+		this.sampleObjectAddress = JvmUtil.addressOf(sampleObject);
 		
 		init();
 	}

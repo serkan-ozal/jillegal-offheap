@@ -7,8 +7,8 @@
 
 package tr.com.serkanozal.jillegal.offheap.pool.impl;
 
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryService;
-import tr.com.serkanozal.jillegal.offheap.memory.DirectMemoryServiceFactory;
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryService;
+import tr.com.serkanozal.jillegal.core.memory.DirectMemoryServiceFactory;
 
 public class DefaultForkableObjectOffHeapPool<T> extends LazyReferencedObjectOffHeapPool<T> {
 
